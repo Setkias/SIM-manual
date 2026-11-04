@@ -1,0 +1,86 @@
+/* Generated from src/theme/ThemeColors.inc by sim_manual/theme_colors.py. */
+:root {
+    --sim-color-black: #000000;
+    --sim-color-near-black: #000001;
+    --sim-color-title-ink: #000002;
+    --sim-color-accent-ink: #020203;
+    --sim-color-deep-gray: #111111;
+    --sim-color-lcd-dark-gray: #191919;
+    --sim-color-charcoal: #222222;
+    --sim-color-graphite: #333333;
+    --sim-color-rail-gray: #646464;
+    --sim-color-lcd-border-gray: #6a6a70;
+    --sim-color-neutral-gray: #777777;
+    --sim-color-muted-gray: #9a9a9b;
+    --sim-color-cool-gray: #aaaaab;
+    --sim-color-soft-gray: #b0b0b0;
+    --sim-color-medium-gray: #b2b2b2;
+    --sim-color-silver: #bbbbbb;
+    --sim-color-panel-gray: #bcbcbe;
+    --sim-color-pale-gray: #c3c3c4;
+    --sim-color-lcd-light-gray: #e4e4e6;
+    --sim-color-snow: #f8f8f8;
+    --sim-color-off-white: #fefefe;
+    --sim-color-title-white: #fffffe;
+    --sim-color-white: #ffffff;
+    --sim-color-brand-lilac: #feeeff;
+    --sim-color-cyan: #0af1ff;
+    --sim-color-ice-blue: #55d6ff;
+    --sim-color-blue: #5a58df;
+    --sim-color-green: #58d68d;
+    --sim-color-pale-cyan: #94dce9;
+    --sim-color-orchid: #ac30a1;
+    --sim-color-lavender: #c4a7e7;
+    --sim-color-amber: #dfa858;
+    --sim-color-pink: #ee7eff;
+    --sim-color-deep-teal: #00536d;
+    --sim-color-deep-magenta: #840098;
+    --sim-color-forest-green: #145a2f;
+    --sim-color-umber: #6b3a00;
+    --sim-color-violet: #4a2a8a;
+}
+
+[data-md-color-scheme="vapor"] {
+    --sim-panel-text: #ffffff;
+    --sim-panel-background: #333333;
+    --sim-title-outline: #0af1ff;
+    --sim-title-fill: #ac30a1;
+    --sim-panel-accent: #dfa858;
+    --sim-pink-accent: #ee7eff;
+    --sim-muted-outline: #9a9a9b;
+    --sim-cool-outline: #94dce9;
+    --sim-brand-outline: #f8f8f8;
+    --sim-mid-gray: #b2b2b2;
+    --sim-dim-outline: #646464;
+    --sim-page-tint: #c4a7e7;
+}
+
+[data-md-color-scheme="slate"] {
+    --sim-panel-text: #ffffff;
+    --sim-panel-background: #222222;
+    --sim-title-outline: #222222;
+    --sim-title-fill: #fffffe;
+    --sim-panel-accent: #fefefe;
+    --sim-pink-accent: #777777;
+    --sim-muted-outline: #9a9a9b;
+    --sim-cool-outline: #bbbbbb;
+    --sim-brand-outline: #feeeff;
+    --sim-mid-gray: #b0b0b0;
+    --sim-dim-outline: #646464;
+    --sim-page-tint: #fefefe;
+}
+
+[data-md-color-scheme="default"] {
+    --sim-panel-text: #000001;
+    --sim-panel-background: #bcbcbe;
+    --sim-title-outline: #c3c3c4;
+    --sim-title-fill: #000002;
+    --sim-panel-accent: #020203;
+    --sim-pink-accent: #777777;
+    --sim-muted-outline: #777777;
+    --sim-cool-outline: #aaaaab;
+    --sim-brand-outline: #feeeff;
+    --sim-mid-gray: #111111;
+    --sim-dim-outline: #9a9a9b;
+    --sim-page-tint: #020203;
+}

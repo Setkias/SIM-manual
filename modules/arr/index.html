@@ -1,0 +1,1482 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for SIM, a VCV Rack plugin for modular sequencing.">
+      
+      
+      
+        <link rel="canonical" href="https://setkias.github.io/SIM-manual/modules/arr/">
+      
+      
+        <link rel="prev" href="../../overviews/modules/">
+      
+      
+        <link rel="next" href="../bank/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Arr - SIM Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/theme-colors.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/manual.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="vapor" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arr" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SIM Manual" class="md-header__button md-logo" aria-label="SIM Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIM Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arr
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="vapor" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light pro"  type="radio" name="__palette" id="__palette_0">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark pro"  type="radio" name="__palette" id="__palette_1">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to vapor"  type="radio" name="__palette" id="__palette_2">
+  
+  <div class="sim-palette-choices" aria-label="Color scheme">
+    <label class="sim-palette-choice sim-palette-choice--vapor" for="__palette_0">Vapor</label>
+    <label class="sim-palette-choice sim-palette-choice--light" for="__palette_1">Light</label>
+    <label class="sim-palette-choice sim-palette-choice--dark" for="__palette_2">Dark</label>
+  </div>
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SIM Manual" class="md-nav__button md-logo" aria-label="SIM Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SIM Manual
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overviews/modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arr
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panel overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voltage-knobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voltage knobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantization-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantization modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expander-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expander interactions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expander interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rex-voltage-sequence-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rex voltage-sequence transform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inx-voltage-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inx voltage operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outx-breakouts-and-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outx breakouts and Cut
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context menu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patch-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patch ideas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patch ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-chords-and-a-bass-from-a-moving-window-over-a-quantized-pitch-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two chords and a bass from a moving window over a quantized pitch table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bank/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bank
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clarence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clarence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coerce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coerce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coerce6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coerce6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qnt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qnt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spike/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spike
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../via/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Via
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expanders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Expanders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overviews/expanders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gaitx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GaitX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ModX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../outx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OutX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ReX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control-rate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control rate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Credits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panel overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voltage-knobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voltage knobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantization-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantization modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expander-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expander interactions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expander interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rex-voltage-sequence-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rex voltage-sequence transform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inx-voltage-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inx voltage operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outx-breakouts-and-cut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outx breakouts and Cut
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context menu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patch-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patch ideas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patch ideas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-chords-and-a-bass-from-a-moving-window-over-a-quantized-pitch-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two chords and a bass from a moving window over a quantized pitch table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="arr">Arr<a class="headerlink" href="#arr" title="Permanent link">&para;</a></h1>
+<!-- AUTO-GENERATED: COMPAT HEADER START -->
+<div class="sim-module-header">
+<a href="#rex-voltage-sequence-transform" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-rex-voltage-sequence-transform" aria-label="Jump to the Re x interaction with Arr"><img src="../../assets/screenshots/faded/vapor/ReX.png#sim-theme-vapor" alt="Re x with Arr"/></a><a href="#rex-voltage-sequence-transform" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-rex-voltage-sequence-transform" aria-label="Jump to the Re x interaction with Arr"><img src="../../assets/screenshots/faded/light/ReX.png#sim-theme-light" alt="Re x with Arr"/></a><a href="#rex-voltage-sequence-transform" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-rex-voltage-sequence-transform" aria-label="Jump to the Re x interaction with Arr"><img src="../../assets/screenshots/faded/dark/ReX.png#sim-theme-dark" alt="Re x with Arr"/></a><a href="#inx-voltage-operations" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-inx-voltage-operations" aria-label="Jump to the In x interaction with Arr"><img src="../../assets/screenshots/faded/vapor/InX.png#sim-theme-vapor" alt="In x with Arr"/></a><a href="#inx-voltage-operations" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-inx-voltage-operations" aria-label="Jump to the In x interaction with Arr"><img src="../../assets/screenshots/faded/light/InX.png#sim-theme-light" alt="In x with Arr"/></a><a href="#inx-voltage-operations" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-inx-voltage-operations" aria-label="Jump to the In x interaction with Arr"><img src="../../assets/screenshots/faded/dark/InX.png#sim-theme-dark" alt="In x with Arr"/></a><img src="../../assets/screenshots/vapor/Arr.png#sim-theme-vapor" alt="Arr"/><img src="../../assets/screenshots/light/Arr.png#sim-theme-light" alt="Arr"/><img src="../../assets/screenshots/dark/Arr.png#sim-theme-dark" alt="Arr"/><a href="#outx-breakouts-and-cut" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-outx-breakouts-and-cut" aria-label="Jump to the Out x interaction with Arr"><img src="../../assets/screenshots/faded/vapor/OutX.png#sim-theme-vapor" alt="Out x with Arr"/></a><a href="#outx-breakouts-and-cut" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-outx-breakouts-and-cut" aria-label="Jump to the Out x interaction with Arr"><img src="../../assets/screenshots/faded/light/OutX.png#sim-theme-light" alt="Out x with Arr"/></a><a href="#outx-breakouts-and-cut" class="sim-module-preview-link"  data-sim-preview-id="sim-interaction-preview-arr-outx-breakouts-and-cut" aria-label="Jump to the Out x interaction with Arr"><img src="../../assets/screenshots/faded/dark/OutX.png#sim-theme-dark" alt="Out x with Arr"/></a>
+</div>
+<!-- AUTO-GENERATED: COMPAT HEADER END -->
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Arr is a sixteen-knob polyphonic control-voltage source. Each knob sets one output channel. Arr can
+quantize those voltages to a scale or a fraction grid and shows knob values as voltages, note names,
+or fractions to match. Expanders can select ranges, combine Arr's channels with other
+voltages, and route or remove individual channels.</p>
+<h2 id="panel-overview">Panel overview<a class="headerlink" href="#panel-overview" title="Permanent link">&para;</a></h2>
+<p><img src="../../assets/diagrams/vapor/arr-panel-overview.svg#sim-theme-vapor" alt="Arr&#x27;s quantization displays, Re x selection band, voltage range and polarity switches, and polyphonic output">
+<img src="../../assets/diagrams/light/arr-panel-overview.svg#sim-theme-light" alt="Arr&#x27;s quantization displays, Re x selection band, voltage range and polarity switches, and polyphonic output">
+<img src="../../assets/diagrams/dark/arr-panel-overview.svg#sim-theme-dark" alt="Arr&#x27;s quantization displays, Re x selection band, voltage range and polarity switches, and polyphonic output"></p>
+<h2 id="voltage-knobs">Voltage knobs<a class="headerlink" href="#voltage-knobs" title="Permanent link">&para;</a></h2>
+<p>Sixteen knobs set the sixteen channels of the polyphonic output. When a quantization mode
+is active, the output receives quantized voltages. The numbered voltage-range switch sets their
+magnitude, and <span class="sim-control">±</span> switches between unipolar and bipolar ranges.</p>
+<p>Knob value displays follow the active mode: raw voltages; note names using ♯ or ♭ for the selected
+scale and root; or fraction forms such as <code>3 * 1/4</code>.</p>
+<h2 id="quantization-modes">Quantization modes<a class="headerlink" href="#quantization-modes" title="Permanent link">&para;</a></h2>
+<p>Click the top display to select the quantization mode:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Off</code></td>
+<td>Knobs and the output pass voltages without quantization.</td>
+</tr>
+<tr>
+<td><code>Scale</code></td>
+<td>Quantizes to the selected musical scale and root note.</td>
+</tr>
+<tr>
+<td><code>Fraction</code></td>
+<td>Quantizes voltages to an absolute step of <code>numerator / denominator</code> volts.</td>
+</tr>
+<tr>
+<td><code>Ranged fraction</code></td>
+<td>Quantizes voltages to a step of <code>numerator / denominator</code> of the magnitude, in either polarity: <code>1/4</code> of 5 V is 1.25 V in <code>0–5 V</code> and in <code>±5 V</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Click the two displays below it to set the mode's details: <span class="sim-control">type</span> and <span class="sim-control">root</span> in <code>Scale</code>, <span class="sim-control">num</span> and
+<span class="sim-control">den</span> in the fraction modes.</p>
+<h2 id="expander-interactions">Expander interactions<a class="headerlink" href="#expander-interactions" title="Permanent link">&para;</a></h2>
+<h3 id="rex-voltage-sequence-transform">Re<sup>x</sup> voltage-sequence transform<a class="headerlink" href="#rex-voltage-sequence-transform" title="Permanent link">&para;</a></h3>
+<p>Re<sup>x</sup> gives Arr a movable window onto its polyphonic values.</p>
+<!-- more -->
+
+<p><span class="sim-control">start</span> selects the first channel, and <span class="sim-control">length</span> sets how many channels it contains. The selection
+wraps around the channels of Arr’s polyphonic output.</p>
+<h3 id="inx-voltage-operations">In<sup>x</sup> voltage operations<a class="headerlink" href="#inx-voltage-operations" title="Permanent link">&para;</a></h3>
+<p>In<sup>x</sup> lets you replace, add to, or insert Arr's output channels.</p>
+<!-- more -->
+
+<p>Each input on In<sup>x</sup> corresponds to a channel of Arr’s polyphonic output. Its <span class="sim-control">mode</span> switch
+has three settings:</p>
+<ul>
+<li><code>Overwrite</code>: values from connected inputs replace the corresponding Arr voltages. Only the first
+  channel of a polyphonic input is used.</li>
+<li><code>Add</code>: values from connected inputs are added to the corresponding channels of Arr’s output. Only
+  the first channel of a polyphonic input is used.</li>
+<li><code>Insert</code>: all values from a connected polyphonic input on In<sup>x</sup> are inserted before the
+  corresponding Arr output channel. If insertion would produce more than 16 channels, Arr truncates
+  the result to 16 channels.</li>
+</ul>
+<p>Arr quantizes the result, so adding a CV transposes within the selected scale.</p>
+<h3 id="outx-breakouts-and-cut">Out<sup>x</sup> breakouts and Cut<a class="headerlink" href="#outx-breakouts-and-cut" title="Permanent link">&para;</a></h3>
+<p>Out<sup>x</sup> routes Arr's channels to separate destinations. It can route individual values and
+normalled ranges, or remove those values from the final polyphonic output.</p>
+<!-- more -->
+
+<p>Out<sup>x</sup> has two independent mode switches. <span class="sim-control">nrm.</span> selects how connected ports receive
+channels. <span class="sim-control">cut</span> selects whether those channels remain on Arr's output.</p>
+<ul>
+<li><code>Individual</code>: each connected port outputs the Arr value corresponding to its channel.</li>
+<li><code>Normalled</code>: each connected port outputs the range after the preceding connected port through its
+  own channel, including unconnected channels in that range.</li>
+<li><code>Copy</code>: all channels remain on Arr's output.</li>
+<li><code>Cut</code>: channels sent to connected Out<sup>x</sup> ports are removed from Arr's output. With <span class="sim-control">nrm.</span>
+  set to <code>Individual</code>, the remaining channels close up. With <span class="sim-control">nrm.</span> set to <code>Normalled</code>, only
+  channels after the last connected port remain.</li>
+</ul>
+<h2 id="context-menu">Context menu<a class="headerlink" href="#context-menu" title="Permanent link">&para;</a></h2>
+<p><code>Snap to quantized values</code> makes the knobs step between quantized values while you turn them.</p>
+<p><code>Control rate</code> trades control response for CPU; see <a href="../../control-rate/">Control rate</a>.</p>
+<h2 id="patch-ideas">Patch ideas<a class="headerlink" href="#patch-ideas" title="Permanent link">&para;</a></h2>
+<h3 id="two-chords-and-a-bass-from-a-moving-window-over-a-quantized-pitch-table">Two chords and a bass from a moving window over a quantized pitch table<a class="headerlink" href="#two-chords-and-a-bass-from-a-moving-window-over-a-quantized-pitch-table" title="Permanent link">&para;</a></h3>
+<p>Use Arr as a quantized pitch table. Connect an LFO to Re<sup>x</sup>'s Start input so the window
+moves over the pitches. Then use Out<sup>x</sup> to break out a three-tone chord, a two-tone chord,
+and a bass to separate oscillators.</p>
+<details class="sim-video">
+  <summary>
+    <span class="sim-video-thumbnail">
+      <img src="../../assets/videos/arr-2chords-1base-poster.png" alt="Show Arr Out x breakouts driving two chords and a bass">
+      <span class="sim-video-play" aria-hidden="true"></span>
+    </span>
+    <span class="sim-video-close"><span class="sim-video-close-icon" aria-hidden="true">×</span>Close video</span>
+  </summary>
+  <video class="sim-inline-video" controls playsinline preload="metadata" poster="../../assets/videos/arr-2chords-1base-poster.png">
+    <source src="../../assets/videos/arr-2chords-1base.mp4" type="video/mp4">
+    Your browser does not support inline video; use the surrounding explanation instead.
+  </video>
+</details>
+
+<!-- AUTO-GENERATED: COMPAT PREVIEWS START -->
+<section class="sim-module-previews" hidden="hidden">
+<div class="sim-contact-sheet-preview" id="sim-interaction-preview-arr-rex-voltage-sequence-transform">
+<div class="sim-contact-sheet-preview-heading">Re<sup>x</sup> voltage-sequence transform</div>
+<p>Re<sup>x</sup> gives Arr a movable window onto its polyphonic values.</p>
+</div>
+<div class="sim-contact-sheet-preview" id="sim-interaction-preview-arr-inx-voltage-operations">
+<div class="sim-contact-sheet-preview-heading">In<sup>x</sup> voltage operations</div>
+<p>In<sup>x</sup> lets you replace, add to, or insert Arr's output channels.</p>
+</div>
+<div class="sim-contact-sheet-preview" id="sim-interaction-preview-arr-outx-breakouts-and-cut">
+<div class="sim-contact-sheet-preview-heading">Out<sup>x</sup> breakouts and Cut</div>
+<p>Out<sup>x</sup> routes Arr's channels to separate destinations. It can route individual values and
+normalled ranges, or remove those values from the final polyphonic output.</p>
+</div>
+</section>
+<!-- AUTO-GENERATED: COMPAT PREVIEWS END -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "toc.follow", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/javascripts/vendor/popper.min.js"></script>
+      
+        <script src="../../assets/javascripts/vendor/tippy.umd.min.js"></script>
+      
+        <script src="../../assets/javascripts/manual.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,36 @@
+Third-party font licenses and provenance
+
+Latin subset, WOFF2 only; unmodified files from the pinned npm packages below.
+All families use the SIL Open Font License 1.1; full texts are alongside the fonts.
+Fetched with npm pack @fontsource/<family>@5.3.0.
+
+Material and manual.css use body/code 400, text 600 and 700, and text italics.
+Unused 500 faces from the former import are omitted for all four families.
+
+@fontsource/jetbrains-mono 5.3.0
+Source: https://www.npmjs.com/package/@fontsource/jetbrains-mono/v/5.3.0
+License: jetbrains-mono/LICENSE
+Files:
+  jetbrains-mono/jetbrains-mono-latin-400-normal.woff2
+
+@fontsource/oxanium 5.3.0
+Source: https://www.npmjs.com/package/@fontsource/oxanium/v/5.3.0
+License: oxanium/LICENSE
+Files:
+  oxanium/oxanium-latin-400-normal.woff2
+  oxanium/oxanium-latin-600-normal.woff2
+  oxanium/oxanium-latin-700-normal.woff2
+
+@fontsource/roboto-mono 5.3.0
+Source: https://www.npmjs.com/package/@fontsource/roboto-mono/v/5.3.0
+License: roboto-mono/LICENSE
+Files:
+  roboto-mono/roboto-mono-latin-400-normal.woff2
+
+@fontsource/roboto 5.3.0
+Source: https://www.npmjs.com/package/@fontsource/roboto/v/5.3.0
+License: roboto/LICENSE
+Files:
+  roboto/roboto-latin-400-normal.woff2
+  roboto/roboto-latin-700-normal.woff2
+  roboto/roboto-latin-400-italic.woff2

@@ -1,0 +1,672 @@
+/*
+ * SIM manuals — thin Material palette seats (salvage layer).
+ *
+ * Strategy: keep Material typeset/chrome systems. Only set scheme tokens and a
+ * few named brand seats. Do not reimplement shell geometry, root rem scale,
+ * heading ladders, or global link/admonition stomps.
+ *
+ * Vapor  (data-md-color-scheme=vapor)  — brand seats + Oxanium
+ * Light  (default)                     — pro neutrals + Roboto
+ * Dark   (slate)                       — pro neutrals + Roboto
+ *
+ * Panel/brand tokens: generated theme-colors.css from src/theme/ThemeColors.inc
+ * Do not re-tune vapor hues without a human OK.
+ */
+
+/* Vendored Latin fonts; see ../fonts/LICENSES.txt. */
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url("../fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+    font-family: 'Oxanium';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url("../fonts/oxanium/oxanium-latin-400-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+    font-family: 'Oxanium';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: url("../fonts/oxanium/oxanium-latin-600-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+    font-family: 'Oxanium';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url("../fonts/oxanium/oxanium-latin-700-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url("../fonts/roboto-mono/roboto-mono-latin-400-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url("../fonts/roboto/roboto-latin-400-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url("../fonts/roboto/roboto-latin-700-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-display: swap;
+    font-weight: 400;
+    src: url("../fonts/roboto/roboto-latin-400-italic.woff2") format("woff2");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+:root {
+    --sim-vapor-cyan: var(--sim-color-cyan);
+    --sim-vapor-pink: var(--sim-color-pink);
+    --sim-vapor-gold: var(--sim-color-amber);
+    --sim-light-page: #f4f4f5;
+    --sim-light-muted: var(--sim-color-neutral-gray);
+    --sim-dark-page: #121212;
+    --sim-dark-text: var(--sim-color-off-white);
+    --sim-dark-muted: var(--sim-color-silver);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Vapor — palette tokens + few seats                                         */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Vapor is a *custom* scheme name. Material only ships dark surface tokens for
+ * `slate`. Without the slate-equivalent plumbing below, kbd / admonition / table
+ * / code-chrome keep *light* :root defaults → bright slabs on a dark page.
+ */
+[data-md-color-scheme="vapor"] {
+    --sim-vapor-panel: var(--sim-panel-background);
+    color-scheme: dark;
+
+    --md-text-font: "Oxanium";
+    --md-text-font-family: "Oxanium", system-ui, sans-serif;
+    --md-code-font: "JetBrains Mono";
+    --md-code-font-family: "JetBrains Mono", ui-monospace, monospace;
+
+    /* Dark shell (same roles as Material slate, fixed vapor hexes) */
+    --md-default-fg-color: #f2f2f4;
+    --md-default-fg-color--light: #b0b0b6;
+    --md-default-fg-color--lighter: #7a7a82;
+    --md-default-fg-color--lightest: #3b3b40;
+    --md-default-bg-color: #18181a;
+    --md-default-bg-color--light: #202022;
+    --md-default-bg-color--lighter: #28282b;
+    --md-default-bg-color--lightest: #323236;
+
+    --md-typeset-color: #f2f2f4;
+    --md-typeset-a-color: var(--sim-vapor-cyan);
+
+    --md-code-fg-color: #f2f2f4;
+    --md-code-bg-color: #28282b;
+    --md-code-bg-color--light: color-mix(in srgb, #28282b 90%, transparent);
+    --md-code-bg-color--lighter: color-mix(in srgb, #28282b 54%, transparent);
+    --md-code-hl-color: var(--sim-vapor-cyan);
+    --md-code-hl-color--light: color-mix(in srgb, var(--sim-vapor-cyan) 12%, transparent);
+    --md-code-hl-name-color: var(--md-code-fg-color);
+    --md-code-hl-operator-color: var(--md-default-fg-color--light);
+    --md-code-hl-punctuation-color: var(--md-default-fg-color--light);
+    --md-code-hl-comment-color: var(--md-default-fg-color--light);
+    --md-code-hl-generic-color: var(--md-default-fg-color--light);
+    --md-code-hl-variable-color: var(--md-default-fg-color--light);
+
+    /* Surfaces that stay light on :root until slate/vapor redefine them */
+    --md-typeset-kbd-color: color-mix(in srgb, #f2f2f4 12%, transparent);
+    --md-typeset-kbd-accent-color: color-mix(in srgb, #f2f2f4 20%, transparent);
+    --md-typeset-kbd-border-color: #18181a;
+    --md-typeset-mark-color: color-mix(in srgb, var(--sim-vapor-gold) 40%, transparent);
+    --md-typeset-table-color: color-mix(in srgb, #f2f2f4 12%, transparent);
+    --md-typeset-table-color--light: color-mix(in srgb, #f2f2f4 4%, transparent);
+
+    --md-admonition-fg-color: var(--md-typeset-color);
+    --md-admonition-bg-color: var(--md-default-bg-color);
+
+    /* Header bar: panel fill; on-header ink stays light */
+    --md-primary-fg-color: var(--sim-vapor-panel);
+    --md-primary-fg-color--light: #444444;
+    --md-primary-fg-color--dark: var(--sim-color-charcoal);
+    --md-primary-bg-color: #f5f5f5;
+    --md-primary-bg-color--light: color-mix(in srgb, #f5f5f5 12%, transparent);
+
+    --md-accent-fg-color: var(--sim-vapor-gold);
+    --md-accent-fg-color--transparent: color-mix(in srgb, var(--sim-vapor-gold) 14%, transparent);
+    --md-accent-bg-color: #18181a;
+    --md-accent-bg-color--light: color-mix(in srgb, #18181a 70%, transparent);
+
+    --md-footer-fg-color: #f2f2f4;
+    --md-footer-fg-color--light: #b0b0b6;
+    --md-footer-fg-color--lighter: #7a7a82;
+    --md-footer-bg-color: #141416;
+    --md-footer-bg-color--dark: #101012;
+
+    /* Dark elevation (slate-like; light :root shadows look chalky on black) */
+    --md-shadow-z1: 0 0.2rem 0.5rem #00000040, 0 0 0.05rem #00000040;
+    --md-shadow-z2: 0 0.2rem 0.5rem #00000059, 0 0 0.05rem #00000059;
+    --md-shadow-z3: 0 0.2rem 0.5rem #00000080, 0 0 0.05rem #00000080;
+}
+
+/* Theme-specific generated imagery. */
+@media screen {
+    img[src$="#only-vapor"],
+    img[src$="#only-light"],
+    img[src$="#only-dark"],
+    img[src$="#sim-theme-vapor"],
+    img[src$="#sim-theme-light"],
+    img[src$="#sim-theme-dark"],
+    .sim-theme-vapor,
+    .sim-theme-light,
+    .sim-theme-dark,
+    .sim-contact-sheet .sim-theme-vapor,
+    .sim-contact-sheet .sim-theme-light,
+    .sim-contact-sheet .sim-theme-dark {
+        display: none;
+    }
+
+    [data-md-color-scheme="vapor"] img[src$="#only-vapor"],
+    [data-md-color-scheme="default"] img[src$="#only-light"],
+    [data-md-color-scheme="slate"] img[src$="#only-dark"],
+    [data-md-color-scheme="vapor"] img[src$="#sim-theme-vapor"],
+    [data-md-color-scheme="default"] img[src$="#sim-theme-light"],
+    [data-md-color-scheme="slate"] img[src$="#sim-theme-dark"],
+    [data-md-color-scheme="vapor"] .sim-theme-vapor,
+    [data-md-color-scheme="default"] .sim-theme-light,
+    [data-md-color-scheme="slate"] .sim-theme-dark {
+        display: inline;
+    }
+
+    /* Legacy non-theme-aware imagery remains compatible with GitHub selectors. */
+    [data-md-color-scheme="vapor"] img[src$="#gh-dark-mode-only"],
+    [data-md-color-scheme="vapor"] img[src$="#only-dark"],
+    [data-md-color-scheme="slate"] img[src$="#gh-dark-mode-only"],
+    [data-md-color-scheme="slate"] img[src$="#only-dark"] {
+        display: inline;
+    }
+
+    [data-md-color-scheme="default"] img[src$="#gh-light-mode-only"],
+    [data-md-color-scheme="default"] img[src$="#only-light"] {
+        display: inline;
+    }
+}
+
+/* Seat: header cyan hairline (no shadow slab) */
+[data-md-color-scheme="vapor"] .md-header {
+    border-bottom: 1px solid color-mix(in srgb, var(--sim-vapor-cyan) 40%, var(--sim-panel-background));
+    box-shadow: none;
+}
+
+/* Code copy chip uses primary-bg; keep it dim on dark code blocks */
+[data-md-color-scheme="vapor"] .md-code__nav {
+    background-color: color-mix(in srgb, #f2f2f4 8%, transparent);
+}
+
+[data-md-color-scheme="vapor"] .md-clipboard {
+    color: var(--md-default-fg-color--light);
+}
+
+/* Seat: nav leaf active = pink wash */
+[data-md-color-scheme="vapor"] .md-nav--primary .md-nav__link--active,
+[data-md-color-scheme="vapor"] .md-nav--primary .md-nav__link--active:focus,
+[data-md-color-scheme="vapor"] .md-nav--primary .md-nav__link--active:hover {
+    background: color-mix(in srgb, var(--sim-vapor-pink) 14%, transparent);
+    color: #ffd0f8;
+}
+
+/* Seat: TOC active = cyan label + gold bar (Material ::before when present) */
+[data-md-color-scheme="vapor"] .md-nav--secondary .md-nav__link--active {
+    color: var(--sim-vapor-cyan);
+}
+
+[data-md-color-scheme="vapor"] .md-nav--secondary .md-nav__link--active::before,
+[data-md-color-scheme="vapor"] .md-nav--secondary .md-nav__item--active > .md-nav__link::before {
+    background-color: var(--sim-vapor-gold);
+}
+
+/* Seat: development warning only — pink edge; leave other admon types alone */
+[data-md-color-scheme="vapor"] .md-typeset .admonition.warning {
+    border-color: var(--sim-vapor-pink);
+}
+
+[data-md-color-scheme="vapor"] .md-typeset .admonition.warning > .admonition-title {
+    background-color: color-mix(in srgb, var(--sim-vapor-pink) 14%, transparent);
+    border-color: var(--sim-vapor-pink);
+}
+
+[data-md-color-scheme="vapor"] .md-typeset .admonition.warning > .admonition-title::before {
+    background-color: var(--sim-vapor-pink);
+}
+
+/* Seat: optional H1 mid-dot (theme-lab); transparent mark bg */
+[data-md-color-scheme="vapor"] .md-typeset h1 .sim-h1-mark {
+    background: transparent;
+    color: var(--sim-vapor-cyan);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Light pro                                                                  */
+/* -------------------------------------------------------------------------- */
+
+[data-md-color-scheme="default"] {
+    --sim-light-panel: var(--sim-panel-background);
+    --sim-light-text: var(--sim-panel-text);
+    --sim-light-outline: var(--sim-panel-accent);
+    --md-text-font: "Roboto";
+    --md-text-font-family: "Roboto", system-ui, sans-serif;
+    --md-code-font: "Roboto Mono";
+    --md-code-font-family: "Roboto Mono", ui-monospace, monospace;
+
+    --md-default-fg-color: var(--sim-light-text);
+    --md-default-fg-color--light: var(--sim-light-muted);
+    --md-default-fg-color--lighter: #9a9a9e;
+    --md-default-fg-color--lightest: #d6d6d8;
+    --md-default-bg-color: var(--sim-light-page);
+    --md-default-bg-color--light: #efeff1;
+    --md-default-bg-color--lighter: #ffffff;
+    --md-default-bg-color--lightest: #ececee;
+
+    --md-typeset-a-color: #1a1a1c;
+
+    --md-primary-fg-color: var(--sim-light-panel);
+    --md-primary-fg-color--light: #ceced0;
+    --md-primary-fg-color--dark: #a8a8aa;
+    --md-primary-bg-color: var(--sim-light-outline);
+    --md-primary-bg-color--light: color-mix(in srgb, var(--sim-light-outline) 70%, transparent);
+
+    --md-accent-fg-color: #333333;
+    --md-accent-fg-color--transparent: color-mix(in srgb, #333333 12%, transparent);
+    --md-accent-bg-color: #ffffff;
+    --md-accent-bg-color--light: color-mix(in srgb, #ffffff 70%, transparent);
+
+    --md-code-fg-color: #1a1a1c;
+    --md-code-bg-color: #ebebec;
+}
+
+[data-md-color-scheme="default"] .md-header {
+    border-bottom: 1px solid #d6d6d8;
+    box-shadow: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Dark pro                                                                   */
+/* -------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] {
+    --md-text-font: "Roboto";
+    --md-text-font-family: "Roboto", system-ui, sans-serif;
+    --md-code-font: "Roboto Mono";
+    --md-code-font-family: "Roboto Mono", ui-monospace, monospace;
+    --md-hue: 0;
+
+    --md-default-fg-color: var(--sim-dark-text);
+    --md-default-fg-color--light: var(--sim-dark-muted);
+    --md-default-fg-color--lighter: #888888;
+    --md-default-fg-color--lightest: #2e2e2e;
+    --md-default-bg-color: var(--sim-dark-page);
+    --md-default-bg-color--light: #161616;
+    --md-default-bg-color--lighter: #1a1a1a;
+    --md-default-bg-color--lightest: #262626;
+
+    --md-typeset-a-color: #f5f5f5;
+
+    --md-primary-fg-color: #0d0d0d;
+    --md-primary-fg-color--light: #1a1a1a;
+    --md-primary-fg-color--dark: #000000;
+    --md-primary-bg-color: #fefefe;
+    --md-primary-bg-color--light: color-mix(in srgb, #fefefe 70%, transparent);
+
+    --md-accent-fg-color: #bbbbbb;
+    --md-accent-fg-color--transparent: color-mix(in srgb, #bbbbbb 14%, transparent);
+    --md-accent-bg-color: #121212;
+    --md-accent-bg-color--light: color-mix(in srgb, #121212 70%, transparent);
+
+    --md-code-fg-color: #f0f0f0;
+    --md-code-bg-color: #1a1a1a;
+
+    --md-footer-bg-color: #0d0d0d;
+    --md-footer-bg-color--dark: #000000;
+}
+
+/* Standalone bracketed panel labels render as control chips. */
+.md-typeset .sim-control {
+    display: inline-block;
+    padding: 0.04rem 0.22rem;
+    border: 1px solid var(--sim-control-border);
+    border-radius: 0.24rem;
+    background: var(--sim-control-bg);
+    color: var(--sim-control-fg);
+    font-size: 0.88em;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+[data-md-color-scheme="vapor"] {
+    --sim-control-bg: color-mix(in srgb, var(--sim-vapor-cyan) 12%, #28282b);
+    --sim-control-border: color-mix(in srgb, var(--sim-vapor-cyan) 42%, #28282b);
+    --sim-control-fg: #f2f2f4;
+}
+
+[data-md-color-scheme="default"] {
+    --sim-control-bg: color-mix(in srgb, var(--sim-light-panel) 38%, #f4f4f5);
+    --sim-control-border: color-mix(in srgb, var(--sim-light-outline) 28%, #f4f4f5);
+    --sim-control-fg: var(--sim-light-text);
+}
+
+[data-md-color-scheme="slate"] {
+    --sim-control-bg: color-mix(in srgb, var(--sim-panel-text) 10%, var(--sim-dark-page));
+    --sim-control-border: color-mix(in srgb, var(--sim-panel-text) 28%, var(--sim-dark-page));
+    --sim-control-fg: var(--sim-dark-text);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Product content (not theme cosplay)                                        */
+/* -------------------------------------------------------------------------- */
+
+.sim-palette-choices {
+    display: flex;
+    gap: 0.2rem;
+    margin: 0 0.35rem;
+}
+
+.sim-palette-choice {
+    border: 0.08rem solid var(--md-primary-bg-color--light);
+    border-radius: 0.2rem;
+    color: var(--md-primary-bg-color);
+    cursor: pointer;
+    font-size: 0.55rem;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 0.2rem 0.4rem;
+    transition: background-color 125ms, color 125ms, border-color 125ms;
+}
+
+.sim-palette-choice:hover,
+.sim-palette-choice:focus-visible {
+    border-color: var(--md-accent-fg-color);
+    color: var(--md-accent-fg-color);
+}
+
+[data-md-color-scheme="vapor"] .sim-palette-choice--vapor,
+[data-md-color-scheme="default"] .sim-palette-choice--light,
+[data-md-color-scheme="slate"] .sim-palette-choice--dark {
+    background-color: var(--md-accent-fg-color);
+    border-color: var(--md-accent-fg-color);
+    color: var(--md-accent-bg-color);
+}
+
+.sim-module-header {
+    line-height: 0;
+    margin: 0;
+    overflow-x: auto;
+    padding: 0;
+    text-align: center;
+}
+
+.sim-module-header img {
+    height: auto;
+    max-height: 16rem;
+    max-width: none;
+    vertical-align: top;
+    width: auto;
+}
+
+.sim-module-header a:focus-visible {
+    outline: 0.15rem solid var(--md-accent-fg-color);
+    outline-offset: -0.15rem;
+}
+
+.sim-contact-sheet {
+    line-height: 0;
+}
+
+.tippy-box {
+    background: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.25rem;
+    box-shadow: var(--md-shadow-z2);
+    color: var(--md-default-fg-color);
+    /* Tippy appends to body, outside .md-typeset; match its body text size. */
+    font-size: 0.8rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    padding: 0.7rem 0.85rem;
+}
+
+.tippy-content {
+    padding: 0;
+}
+
+.tippy-arrow {
+    color: var(--md-default-bg-color);
+}
+
+.sim-contact-sheet-preview-heading {
+    display: block;
+    font-size: 1.17em;
+    font-weight: 700;
+    margin: 1em 0 0.35rem;
+}
+
+.sim-contact-sheet-preview,
+.sim-contact-sheet-preview-summary {
+    max-height: 20rem;
+    overflow-y: auto;
+}
+
+.sim-contact-sheet-preview p {
+    margin: 0.4rem 0;
+}
+
+.sim-contact-sheet-preview :is(ul, ol) {
+    margin: 0.4rem 0;
+    padding-left: 1.2rem;
+}
+
+.sim-contact-sheet-preview table {
+    border-collapse: collapse;
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.sim-contact-sheet-preview :is(th, td) {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    padding: 0.2rem 0.4rem;
+}
+
+.sim-contact-sheet-preview a {
+    color: var(--md-typeset-a-color);
+}
+
+.sim-contact-sheet-preview code {
+    background: var(--md-code-bg-color);
+    border-radius: 0.15rem;
+    padding: 0.05rem 0.2rem;
+}
+
+/* Preview content is informational; reduced-motion users should not get a popover animation. */
+@media (prefers-reduced-motion: reduce) {
+    .tippy-box,
+    .tippy-arrow {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+.sim-contact-sheet > p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 0.35rem;
+    justify-content: center;
+    margin: 0;
+}
+
+.sim-contact-sheet img {
+    display: block;
+    height: 16rem;
+    width: auto;
+}
+
+.md-typeset video.sim-inline-video {
+    --sim-inline-video-height: 16rem;
+
+    display: block;
+    height: var(--sim-inline-video-height);
+    margin: 1rem 0;
+    max-width: 100%;
+    width: auto;
+}
+
+.md-typeset details.sim-video {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.md-typeset details.sim-video:focus-within {
+    box-shadow: none;
+}
+
+.md-typeset details.sim-video > summary {
+    appearance: none;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    cursor: pointer;
+    list-style: none;
+}
+
+.md-typeset details.sim-video > summary .sim-video-thumbnail {
+    display: block;
+}
+
+.md-typeset details.sim-video > summary .sim-video-close {
+    display: none;
+}
+
+.md-typeset details.sim-video > summary::before,
+.md-typeset details.sim-video > summary::after {
+    content: none !important;
+    display: none !important;
+}
+
+.md-typeset details.sim-video > summary::-webkit-details-marker {
+    display: none;
+}
+
+.md-typeset details.sim-video > summary::marker {
+    content: "";
+}
+
+.md-typeset details.sim-video > summary img {
+    display: block;
+    height: 10rem;
+    max-width: 100%;
+    object-fit: contain;
+    width: auto;
+}
+
+.md-typeset details.sim-video .sim-video-thumbnail {
+    position: relative;
+}
+
+.md-typeset details.sim-video .sim-video-play {
+    background: rgb(0 0 0 / 70%);
+    border: 0.125rem solid rgb(255 255 255 / 85%);
+    border-radius: 50%;
+    height: 3rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 3rem;
+}
+
+.md-typeset details.sim-video .sim-video-play::after {
+    border-bottom: 0.5rem solid transparent;
+    border-left: 0.75rem solid #fff;
+    border-top: 0.5rem solid transparent;
+    content: "";
+    left: 52%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.md-typeset details.sim-video[open] > summary .sim-video-thumbnail {
+    display: none;
+}
+
+.md-typeset details.sim-video[open] > summary .sim-video-close {
+    background: rgb(255 255 255 / 10%);
+    border-radius: 0.4rem;
+    color: inherit;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    text-decoration: none;
+}
+
+.md-typeset details.sim-video .sim-video-close-icon {
+    display: inline-block;
+    font-size: 1.25em;
+    line-height: 0.8;
+    margin-right: 0.35rem;
+    vertical-align: -0.08em;
+}
+
+.md-typeset details.sim-video[open] video.sim-inline-video {
+    height: auto;
+    max-height: min(70vh, 32rem);
+    max-width: 100%;
+    width: auto;
+}
+
+@media screen and (max-width: 44.984375em) {
+    .sim-module-header img {
+        max-height: 26vh;
+    }
+
+    .sim-contact-sheet img {
+        height: 8rem;
+    }
+
+    .md-typeset details.sim-video[open] video.sim-inline-video {
+        max-height: min(60vh, 24rem);
+    }
+}

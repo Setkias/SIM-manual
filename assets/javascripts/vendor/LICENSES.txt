@@ -1,0 +1,9 @@
+Third-party JavaScript licenses
+
+@popperjs/core 2.11.8
+Copyright (c) 2019-present Floating UI contributors
+MIT License. See https://github.com/floating-ui/floating-ui/blob/v2.11.8/LICENSE.md
+
+tippy.js 6.3.7
+Copyright (c) 2017-2021 atomiks
+MIT License. See https://github.com/atomiks/tippyjs/blob/v6.3.7/LICENSE
